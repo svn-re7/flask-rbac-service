@@ -1,4 +1,9 @@
+import os
+
 class Config:
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        "DATABASE_URL",
+        "postgresql://postgres:postgres@localhost:5432/postgres"
+        )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
